@@ -1,0 +1,21 @@
+{
+  "name": "marvel-movies-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A full-stack Marvel Movies app with a React client and Express server",
+  "scripts": {
+    "client:start": "npm start --prefix client",
+    "client:build": "npm run build --prefix client",
+    "client:test": "npm test --prefix client",
+    "server:start": "npm start --prefix server",
+    "server:start:dev": "npm run start:dev --prefix server",
+    "server:build": "npm run build --prefix server",
+    "start": "concurrently \"npm run client:start\" \"npm run server:start\"",
+    "start:dev": "concurrently \"npm run client:start\" \"npm run server:start:dev\"",
+    "build": "npm run client:build && npm run server:build",
+    "test": "npm run client:test"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
