@@ -23,7 +23,7 @@ Before running the application, ensure you have the following:
 Clone the repository and navigate into the project directory:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/AlonaFriedler/marvel-movies-app
 cd marvel-movies-app
 ```
 
@@ -42,6 +42,7 @@ Create a `.env` File
 
    ```env
    TMDB_API_KEY=your_actual_api_key_here
+   ```
 ---
 
 ## Scripts
@@ -117,36 +118,21 @@ marvel-movies-app/
    - Follow the [Setup](#setup) instructions above.
 
 2. **Run the app:**
-   - Use the `npm start` command to spin up both the client and server.
+   - Use the `npm start:dev` command to spin up both the client and server.
    - If working on the server only, use `npm run start:dev`.
 
 3. **Access the app:**
    - Frontend: [http://localhost:3000](http://localhost:3000)
    - Backend: [http://localhost:5000](http://localhost:5000)
 
----
+4. **Trigger Data Acquisition**
 
-## Trigger Data Acquisition
-
-To populate the database with data:
-
-1. Start the server using:
-   ```bash
-   npm run server:start
-   ```
-
-2. Send a GET request to this endpoint:
+    - To populate the database with data send a GET request to this endpoint:
    ```bash
    http://localhost:5000/api/dataAcquisition/triggerDataAcquisition
    ```
 
-   You can use tools like [Postman](https://www.postman.com/) or `curl`. Example with `curl`:
-
-   ```bash
-   curl http://localhost:5000/api/dataAcquisition/triggerDataAcquisition
-   ```
-
-3. Check the server logs to confirm the data has been allocated.
+    - Check the server logs to confirm the data has been allocated.
 
 ---
 
