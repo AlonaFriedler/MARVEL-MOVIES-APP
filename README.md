@@ -30,19 +30,52 @@ cd marvel-movies-app
 Install dependencies for the project:
 
 ```bash
-npm install
-npm install --prefix client
-npm install --prefix server
+npm run install:all
+```
+Alternatively, you can run the setup script, which not only installs dependencies but also sets up the required environment variables for both the server and client:
+
+```bash
+npm run setup
+```
+This script executes a Bash script (setup.sh) to automate dependency installation and .env file creation.
+
+**Note for Windows Users**
+To use the setup.sh script, you will need an environment that supports Bash, such as Git Bash or an alternative. Ensure you have one installed before running this script.
+
+If you prefer manual setup, proceed to the following sections to configure the environment variables.
+
+### Setting Up Environment Variables (Manual Method)
+
+#### 1. Create a `.env` File for the Server
+
+At the root of your `server` folder (next to `index.ts`), create a `.env` file and add the following:
+
+```env
+TMDB_API_KEY=your_actual_api_key_here
+PORT=5000
 ```
 
-Setting Up Environment Variables
+- **TMDB_API_KEY**: Replace `your_actual_api_key_here` with your actual API key for The Movie Database (TMDB).
+- **PORT**: The port number your server will listen on. Default is `5000`.
 
-Create a `.env` File
-   At the root of your `server` folder (next to `index.ts`), create a `.env` file and add your `TMDB_API_KEY`:
+#### 2. Create `.env` Files for the Client
 
-   ```env
-   TMDB_API_KEY=your_actual_api_key_here
-   ```
+At the root of your `client` folder, create `.env` files for different environments to manage environment-specific variables like the server URL.
+
+##### `.env.development`
+```env
+REACT_APP_SERVER_URL=http://localhost:5000
+```
+
+- **REACT_APP_SERVER_URL**: The server URL to use during development.
+
+##### `.env.production`
+```env
+REACT_APP_SERVER_URL=http://localhost:5000
+```
+
+- **REACT_APP_SERVER_URL**: The server URL to use for the production environment.
+
 ---
 
 ## Scripts
@@ -157,6 +190,10 @@ marvel-movies-app/
 ### Data Acquisition
 - **Scope**: Only predefined movies and actors are processed.
 - **Name Uniqueness**: Movies, characters, and actors are uniquely identified by their names.
+  - Example: Characters with different names, even if similar, are treated as distinct. For instance:
+    - Tony Stark
+    - Tony Stark (uncredited)
+    - Tony Stark / Iron Man
 - **Validation**: Assumes predefined movie and actor names match TMDB API data. Assumes an actor plays at most one character per movie. 
 
 
