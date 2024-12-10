@@ -1,11 +1,12 @@
 import { MoviesPerActorResponse, ActorsWithMultipleCharactersResponse } from '../../../shared/types'
 import { useFetchData, FetchDataResponse } from './useFetchData'
-const API_URL = 'http://localhost:5000/api/actors';  // TODO Replace with env variable
+const serverUrl = process.env.REACT_APP_SERVER_URL || "http://localhost:5000";
+const apiUrl = `${serverUrl}/api/actors`;
 
 export const useMoviePerActor = (): FetchDataResponse<MoviesPerActorResponse> => {
-  return useFetchData(`${API_URL}/moviesPerActor`);
+  return useFetchData(`${apiUrl}/moviesPerActor`);
 }
 
 export const useActorsWithMultipleCharacters = (): FetchDataResponse<ActorsWithMultipleCharactersResponse> => {
-  return useFetchData(`${API_URL}/actorsWithMultipleCharacters`);
+  return useFetchData(`${apiUrl}/actorsWithMultipleCharacters`);
 }
